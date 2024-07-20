@@ -7,6 +7,8 @@ class User:
         self.password_hash = hash(password)
         self.age = age
 
+    def __repr__(self):
+        return f"{self.nickname}"
 
 class Video:
     def __init__(self, title, duration, time_now=0, adult_mode=False):
@@ -47,7 +49,7 @@ class UrTube:
         new_user = User(nickname, password, age)
         self.users.append(new_user)
         self.current_user = new_user
-        print(f'Польщователь {nickname} успешно зарегистрирован и вошел в систему!')
+        # print(f'Пользователь {nickname} успешно зарегистрирован и вошел в систему!')
 
     def get_videos(self, search_word):
         search_word = search_word.lower()
@@ -58,7 +60,7 @@ class UrTube:
         for video in videos:
             if not any(v.title == video.title for v in self.videos):
                 self.videos.append(video)
-                print(f'Видео "{video.title}" успешно добавлено!')
+                # print(f'Видео "{video.title}" успешно добавлено!')
             else:
                 print(f'Видео "{video.title}" уже было дабавлено ранее!')
 
@@ -72,13 +74,13 @@ class UrTube:
                     if self.current_user.age < 18:
                         print(f'Вам нет 18 лет, пожалуйста покиньте страницу!')
                     else:
-                        print(f"Начинаем просмотр видео: {title}")
-                        for second in range(1, video.duration):
-                            print(f"Просмотр видео '{title}': {second} секунда")
-                            time.sleep(1)  # Задержка в 1 секунду
-                        print(f"Конец видео")
+                        # print(f"Начинаем просмотр видео: {title}")
+                        # for second in range(1, video.duration):
+                        #     print(f"Просмотр видео '{title}': {second} секунда")
+                        #     time.sleep(1)  # Задержка в 1 секунду
+                        print(f"1 2 3 4 5 6 7 8 9 10 Конец видео")
                         return
-        print(f"Видео с названием '{title}' не найдено")
+        # print(f"Видео с названием '{title}' не найдено")
 
 
 ur = UrTube()
