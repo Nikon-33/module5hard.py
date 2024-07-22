@@ -10,6 +10,7 @@ class User:
     def __repr__(self):
         return f"{self.nickname}"
 
+
 class Video:
     def __init__(self, title, duration, time_now=0, adult_mode=False):
         self.title = str(title)
@@ -74,11 +75,13 @@ class UrTube:
                     if self.current_user.age < 18:
                         print(f'Вам нет 18 лет, пожалуйста покиньте страницу!')
                     else:
-                        # print(f"Начинаем просмотр видео: {title}")
-                        # for second in range(1, video.duration):
-                        #     print(f"Просмотр видео '{title}': {second} секунда")
-                        #     time.sleep(1)  # Задержка в 1 секунду
-                        print(f"1 2 3 4 5 6 7 8 9 10 Конец видео")
+                        print(f"Начинаем просмотр видео: {title}")
+                        long_watch = []
+                        for second in range(1, video.duration + 1):
+                            print(f"\rПросмотр видео '{title}': {second} секунда", end='')
+                            time.sleep(1)  # Задержка в 1 секунду
+                            long_watch.append(second)
+                        print("\n" + " ".join(map(str, long_watch)), "Конец видео") # для вывода как в примере задания
                         return
         # print(f"Видео с названием '{title}' не найдено")
 
@@ -106,4 +109,3 @@ print(ur.current_user)
 
 # Попытка воспроизведения несуществующего видео
 ur.watch_video('Лучший язык программирования 2024 года!')
-
